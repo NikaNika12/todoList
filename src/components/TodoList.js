@@ -83,7 +83,7 @@ const TodoList = () => {
                 )}
             </div>
             {taskList.length < 1 ? null : (
-            <p>{`Всего осталось выполнить: ${taskList.length} заданий`}</p>
+            <p className="task_result">{`Всего осталось выполнить: ${taskList.length} заданий`}</p>
             )}
         </div>
     )
