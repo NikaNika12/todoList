@@ -24,7 +24,7 @@ const TodoItem = ({ todo, toggleComplete, deleteTodo, updateListArray, taskObj, 
         </div>
         </div>
         <div className="task_btn">
-          <p>{todo.date}</p>
+          <p className="task_description">{todo.date}</p>
           <input onChange={() => toggleComplete(todo)} type='checkbox' checked={todo.completed ? 'checked' : ''} />
           <button className="btn" onClick={() => setModal(true)}>Редактировать</button>
           <MyModal visible={modal} setVisible={setModal}>
