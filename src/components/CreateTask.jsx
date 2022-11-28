@@ -13,10 +13,15 @@ const CreateTask = ({create}) => {
     const [date, setDate] = useState("")
     
     const storage = getStorage();
+
+    /** функция добавления задания в firebase */
     const addTask = (event) => {
         event.preventDefault()
         const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
-        uploadBytes(imageRef, imageUpload).then(() => {alert("Файл загружен")});
+        uploadBytes(imageRef, imageUpload).then(() => {
+            alert("Файл загружен")
+            setImageUrl(imageRef, imageRef._location.path_)
+        });
         let taskObj = {...task, id: Date.now()}
         create(taskObj)
         addDoc(collection(db, 'todo'), {

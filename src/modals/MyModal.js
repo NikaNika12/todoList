@@ -1,3 +1,5 @@
+/**pop up форма*/
+
 import React from 'react';
 import cl from './MyModal.module.css';
 

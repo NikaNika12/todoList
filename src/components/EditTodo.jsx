@@ -14,40 +14,23 @@ const EditTask = ({todo, updateTask, taskObj}) => {
     const [date, setDate] = useState("")
     const [imageUpload, setImageUpload] = useState(null);
 
-    
-
 
     // useEffect(() => {
     //     setTask({title: taskObj.Title, description: taskObj.Description})
     // }, [])
 
+    /**редактирование todo и внесение в firebase */
     const editTodo = (event) => {
         event.preventDefault()
         let taskObj = {}
         taskObj["Title"] = task.title
         taskObj["Description"] = task.description
-    //     // updateDoc(doc(db, 'todo', todo.id), {
-    //     //     title: task.title,
-    //     //     description: task.description,
-    //     //   });
-    //     // updateTask(tempObj)
+    //  updateDoc(doc(db, 'todo', todo.id), {
+    //      title: task.title,
+    //      description: task.description,
+    //      });
+    //  updateTask(tempObj)
     }
-
-    // const editTodo = (event) => {
-    //     event.preventDefault()
-    //     let tempObj = {}
-    //     tempObj["Title"] = task.title
-    //     tempObj["Description"] = task.description
-    //     updateDoc(doc(db, 'todo', todo.id), {
-    //         title: task.title,
-    //         description: task.description,
-    //       });
-    //     updateTask(tempObj)
-    // }
-    
-    
-
-
 
     return (
         <form className='form'>

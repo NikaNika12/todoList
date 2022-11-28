@@ -15,10 +15,11 @@ import {
 } from 'firebase/firestore';
 
 const TodoList = () => {
+  /**создание состояний */
     const [modal, setModal] = useState(false);
     const [taskList, setTaskList] = useState([]);
 
-     // Read todo from firebase
+  /** прочтение заданий из firebase */
   useEffect(() => {
     const q = query(collection(db, 'todo'));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -31,20 +32,20 @@ const TodoList = () => {
     return () => unsubscribe();
   }, []);
 
-  // Update todo in firebase
+  /** обновление заданий в firebase */
   const toggleComplete = async (todo) => {
     await updateDoc(doc(db, 'todo', todo.id), {
       completed: !todo.completed,
     });
   };
 
-  // Delete todo
+  /** удаление заданий из firebase */
   const deleteTodo = async (id) => {
     await deleteDoc(doc(db, 'todo', id));
   };
 
 
-
+  /**функция создания задания */
   const createTask = (taskObj) => {
     let tempList = taskList
     tempList.push(taskObj)
@@ -53,7 +54,7 @@ const TodoList = () => {
   }
 
 
-    
+  /** обновление заданий после редактирования */
   const updateListArray = (obj, index) => {
     let tempList = taskList
     tempList[index] = obj
@@ -64,7 +65,7 @@ const TodoList = () => {
         <div>
             <div className="header">
                 <h1>ToDo лист</h1>
-                <button className="header_btn" onClick={() => setModal(true)}>
+                <button className="button_main" onClick={() => setModal(true)}>
                 Создать задание
                 </button>
                 <MyModal visible={modal} setVisible={setModal}>
