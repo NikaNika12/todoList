@@ -14,10 +14,11 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 
-const TodoList = () => {
+const TodoList = (task, setTask) => {
   /**создание состояний */
     const [modal, setModal] = useState(false);
     const [taskList, setTaskList] = useState([]);
+    
 
   /** прочтение заданий из firebase */
   useEffect(() => {
@@ -39,6 +40,8 @@ const TodoList = () => {
     });
   };
 
+ 
+
   /** удаление заданий из firebase */
   const deleteTodo = async (id) => {
     await deleteDoc(doc(db, 'todo', id));
@@ -54,12 +57,6 @@ const TodoList = () => {
   }
 
 
-  /** обновление заданий после редактирования */
-  const updateListArray = (obj, index) => {
-    let tempList = taskList
-    tempList[index] = obj
-    setTaskList(tempList)
-  }
 
     return (
         <div>
@@ -79,7 +76,7 @@ const TodoList = () => {
                         todo={todo}
                         toggleComplete={toggleComplete}
                         deleteTodo={deleteTodo}
-                        updateListArray={updateListArray}
+                        
                     />
                 )}
             </div>

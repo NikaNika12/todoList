@@ -20,7 +20,7 @@ const CreateTask = ({create}) => {
         const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
         uploadBytes(imageRef, imageUpload).then(() => {
             alert("Файл загружен")
-            setImageUrl(imageRef, imageRef._location.path_)
+            setImageUrl(imageRef, imageRef.storage)
         });
         let taskObj = {...task, id: Date.now()}
         create(taskObj)

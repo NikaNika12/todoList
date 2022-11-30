@@ -21,3 +21,8 @@ const MyModal = ({children, visible, setVisible}) => {
 };
 
 export default MyModal;
+
+
+
+// 32 2053. Sokak, 07230 Анталья, Турция
+// Home Mood Apart Hotel
